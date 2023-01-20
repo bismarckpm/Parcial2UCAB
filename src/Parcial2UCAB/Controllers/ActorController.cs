@@ -21,10 +21,11 @@ namespace Parcial2UCAB.Controllers
         [HttpPost]
         public async Task<Guid> CreateActor([FromBody] ActorRequest request)
         {
-            Guid result;
+            Guid result = new Guid();
             try
             {
-                result = await _actorDAO.CreateActor(request);
+                if (request != null)
+                    result = await _actorDAO.CreateActor(request);
             }
             catch (Exception)
             {
