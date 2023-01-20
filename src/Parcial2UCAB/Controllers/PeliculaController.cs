@@ -53,7 +53,7 @@ namespace Parcial2UCAB.Controllers
 
         }
 
-        [HttpGet("/{nombre}")]
+        [HttpGet("pelicula/{nombre}")]
         public async Task<List<PeliculaResponse>> GetPelicula([Required][FromRoute] string nombre)
         {
             List<PeliculaResponse> result = null;

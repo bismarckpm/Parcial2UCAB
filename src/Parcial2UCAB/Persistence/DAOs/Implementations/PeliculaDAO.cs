@@ -31,6 +31,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
             try
             {
                 var entity = new Pelicula();
+                entity.Tipo = request.Tipo;
                 entity.Titulo = Util.Ajustar(request.Titulo);
                 entity.EnCartelera = request.EnCartelera;
                 var generos = new List<Genero>();
@@ -64,6 +65,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 var entity = new Pelicula();
                 entity.Id = request.Id;
                 entity.Titulo = request.Titulo;
+                entity.Tipo = request.Tipo;
                 entity.EnCartelera = request.EnCartelera;
                 _context.Peliculas.Update(entity);
                 result = entity.Id;
