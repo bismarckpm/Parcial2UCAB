@@ -26,6 +26,7 @@ namespace Parcial2UCAB.Test.DataSeed
                             PeliculaId = new Guid("5c4b2c90-d9ea-41ec-93d4-1e4abb42f561"),
                             Personaje = "Pedro",
                             Orden = 1,
+                            Tipo = TipoActor.Protagonista,
                             Pelicula = new Pelicula
                             {
                                 Id= new Guid("5c4b2c90-d9ea-41ec-93d4-1e4abb42f561"),
@@ -59,6 +60,7 @@ namespace Parcial2UCAB.Test.DataSeed
                             PeliculaId = new Guid("870b6445-cf05-4b87-9ef8-96a759666a8c"),
                             Personaje = "Katherina",
                             Orden = 1,
+                            Tipo = TipoActor.Protagonista,
                             Pelicula = new Pelicula
                             {
                                 Id= new Guid("870b6445-cf05-4b87-9ef8-96a759666a8c"),
@@ -82,6 +84,7 @@ namespace Parcial2UCAB.Test.DataSeed
                             PeliculaId = new Guid("a0b34ab6-3fb7-4d3b-ad33-065521a528eb"),
                             Personaje = "La Bestia",
                             Orden = 1,
+                            Tipo = TipoActor.Protagonista,
                             Pelicula = new Pelicula
                             {
                                 Id= new Guid("a0b34ab6-3fb7-4d3b-ad33-065521a528eb"),
@@ -120,6 +123,7 @@ namespace Parcial2UCAB.Test.DataSeed
                             PeliculaId = new Guid("c0556a2f-c581-49d6-9914-cafe90ad179c"),
                             Personaje = "Maria",
                             Orden = 1,
+                            Tipo = TipoActor.Protagonista,
                             Pelicula = new Pelicula
                             {
                                 Id= new Guid("c0556a2f-c581-49d6-9914-cafe90ad179c"),
