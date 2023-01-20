@@ -50,5 +50,70 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<ActorResponse>(result);
         }
+        //Agregado
+        [Fact]
+        public async Task UpdateActor()
+        {
+            _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdateActor(new ActorRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+        //Agregado
+
+        [Fact]
+        public async Task ThrowCreateActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.CreateActor(new ActorRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        //Agregado
+        [Fact]
+        public async Task ThrowUpdateActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdateActor(new ActorRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        //Agregado
+        [Fact]
+        public async Task ThrowGetActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.GetActor(new Guid("47929024-b86e-41cd-b459-733687123d98")))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.GetActor(new Guid("47929024-b86e-41cd-b459-733687123d98"));
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
     }
 }

@@ -14,50 +14,32 @@ namespace Parcial2UCAB.Utilities
 
         public static string Ajustar(string palabra)
         {
-            var actualCount = 0;
+
             var palabraajustada = string.Empty;
 
-            if (ConNuevaLinea(palabra)) return palabra;
-
-            if (ConEspacioONull(palabra)) return string.Empty;
-
-            foreach (var caracter in palabra)
-            {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
-
-                if (ConEspacioONuevaLinea(caracter)) continue;
-
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
-
-                actualCount++;
-
-                if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
-            }
+            palabraajustada = palabra + "\n";
 
             palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
 
             return palabraajustada;
         }
 
+
         private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
         {
             var _palabraajustada = palabraajustada;
             var contadorEspacios = 0;
+            int contadorSalida;
 
-            for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
+            for (contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
+
             {
-                if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
-                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
-                    {
-                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
-                            contadorEspacios++;
-                        else
-                            break;
-                    }
-
-                if (contadorEspacios <= 0) continue;
-
+                if (char.IsWhiteSpace(palabraajustada[contadorSalida]))
+                {
+                    contadorEspacios++;
+                }
+                else
+                    break;
                 _palabraajustada = RemoverEspaciosEnBlancoPalabraAjustada(palabraajustada, contadorSalida, contadorEspacios);
 
                 contadorEspacios = 0;
@@ -66,24 +48,13 @@ namespace Parcial2UCAB.Utilities
             return _palabraajustada;
         }
 
+
         private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
         {
-            return palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
+            return palabraajustada.Remove(contadorSalida, contadorEspacios);
         }
 
-        private static bool ConNuevaLinea(string palabra)
-        {
-            return palabra == "\n";
-        }
 
-        private static bool ConEspacioONull(string palabra)
-        {
-            return (string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra));
-        }
-
-        private static bool ConEspacioONuevaLinea(char wrd)
-        {
-            return char.IsWhiteSpace(wrd) && (wrd == '\n');
-        }
+       
     }
 }
