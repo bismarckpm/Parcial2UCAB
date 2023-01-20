@@ -15,42 +15,42 @@ namespace Parcial2UCAB.Utilities
         public static string Ajustar(string palabra)
         {
             var actualCount = 0;
-            var palabraajustada = string.Empty;
+            var NewPalabra = string.Empty;
 
-            if (ConNuevaLinea(palabra)) return palabra;
+            if (NewLinea(palabra)) return palabra;
 
             if (ConEspacioONull(palabra)) return string.Empty;
 
             foreach (var caracter in palabra)
             {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
+                NewPalabra = NewPalabra + Convert.ToString(caracter);
 
                 if (ConEspacioONuevaLinea(caracter)) continue;
 
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
+                if (NewLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
 
                 actualCount++;
 
                 if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
+                    NewPalabra += "\n";
             }
 
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
+            NewPalabra = PalabraSinEspacios(NewPalabra);
 
-            return palabraajustada;
+            return NewPalabra;
         }
 
-        private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
+        private static string PalabraSinEspacios(string NewPalabra)
         {
-            var _palabraajustada = palabraajustada;
+            var _NewPalabra = NewPalabra;
             var contadorEspacios = 0;
 
-            for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
+            for (var contadorSalida = 0; contadorSalida < NewPalabra.Length; contadorSalida++)
             {
-                if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
-                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
+                if (NewLinea(NewPalabra[contadorSalida].ToString(CultureInfo.InvariantCulture)))
+                    for (var inCounter = contadorSalida + 1; inCounter < NewPalabra.Length; inCounter++)
                     {
-                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
+                        if (char.IsWhiteSpace(NewPalabra[inCounter]))
                             contadorEspacios++;
                         else
                             break;
@@ -58,20 +58,20 @@ namespace Parcial2UCAB.Utilities
 
                 if (contadorEspacios <= 0) continue;
 
-                _palabraajustada = RemoverEspaciosEnBlancoPalabraAjustada(palabraajustada, contadorSalida, contadorEspacios);
+                _NewPalabra = QuitarEspacios(NewPalabra, contadorSalida, contadorEspacios);
 
                 contadorEspacios = 0;
             }
 
-            return _palabraajustada;
+            return _NewPalabra;
         }
 
-        private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
+        private static string QuitarEspacios(string NewPalabra, int contadorSalida, int contadorEspacios)
         {
-            return palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
+            return NewPalabra.Remove(contadorSalida + 1, contadorEspacios);
         }
 
-        private static bool ConNuevaLinea(string palabra)
+        private static bool NewLinea(string palabra)
         {
             return palabra == "\n";
         }
