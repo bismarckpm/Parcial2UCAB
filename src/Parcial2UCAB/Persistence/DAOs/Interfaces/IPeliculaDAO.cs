@@ -14,5 +14,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Interfaces
         Task<Guid> UpdatePelicula(PeliculaRequest request);
 
         Task<List<PeliculaResponse>> GetPeliculaxNombre(string nombre);
+        //void GetPeliculaxNombre(Func<PeliculaResponse, PeliculaResponse, global::Moq.Range, PeliculaResponse> isInRange);
+        // void GetPeliculaxNombre(PeliculaRequest peliculaRequest);
     }
 }
