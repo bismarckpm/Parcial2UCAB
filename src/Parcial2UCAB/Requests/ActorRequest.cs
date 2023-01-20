@@ -10,5 +10,6 @@ namespace Parcial2UCAB.Requests
         public string Biografia { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string FotoURL { get; set; }
+        public string Rol {get; set;}
     }
 }

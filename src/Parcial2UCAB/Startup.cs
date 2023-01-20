@@ -8,7 +8,6 @@ using Microsoft.OpenApi.Models;
 using Parcial2UCAB.Persistence.DAOs.Implementations;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Persistence.Database;
-
 namespace Parcial2UCAB
 {
     public class Startup
@@ -42,10 +41,11 @@ namespace Parcial2UCAB
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-
-            }
+                {
+                    app.UseDeveloperExceptionPage();
+                    app.UseSwagger();
+                    app.UseSwaggerUI(t=>t.SwaggerEndpoint("/swagger/v1/swagger.json", "Parcial2UCAB v1"));
+                }
 
             app.UseHttpsRedirection();
 

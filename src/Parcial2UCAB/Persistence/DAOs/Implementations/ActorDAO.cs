@@ -5,6 +5,7 @@ using Parcial2UCAB.Persistence.Database;
 using Parcial2UCAB.Persistence.Entities;
 using Parcial2UCAB.Requests;
 using Parcial2UCAB.Responses;
+using Parcial2UCAB.Utilities;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,14 +29,11 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
             var result = Guid.Empty;
             try
             {
-                var entity = new Actor()
-                {
-                    Nombre = request.Nombre + " " + request.Apellido,
-                    Biografia = request.Biografia,
-                    FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
-                };
-
+                var entity = Util.ActorFactory(request.Rol);
+                entity.Nombre = request.Nombre + " " + request.Apellido;
+                entity.Biografia = request.Biografia;
+                entity.FechaNacimiento = request.FechaNacimiento;
+                entity.FotoURL = request.FotoURL;
                 _context.Actores.Add(entity);
                 result = entity.Id;
                 await _context.SaveEfContextChanges("APPUSER");
@@ -56,14 +54,13 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
             Guid result;
             try
             {
-                var entity = new Actor()
-                {
-                    Id = request.Id,
-                    Nombre = request.Nombre + " " + request.Apellido,
-                    Biografia = request.Biografia,
-                    FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
-                };
+                var entity = Util.ActorFactory(request.Rol);
+                entity.Nombre = request.Nombre + " " + request.Apellido;
+                entity.Biografia = request.Biografia;
+                entity.FechaNacimiento = request.FechaNacimiento;
+                entity.FotoURL = request.FotoURL;
+                _context.Actores.Add(entity);
+                result = entity.Id;
 
                 _context.Actores.Update(entity);
                 result = entity.Id;
