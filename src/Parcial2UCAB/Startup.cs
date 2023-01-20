@@ -26,7 +26,7 @@ namespace Parcial2UCAB
 
             services.AddControllers();
             services.AddDbContext<Parcial2DbContext>(options =>
-            options.UseNpgsql(Configuration["DBConnectionString"], x => x.UseNetTopologySuite()));
+                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IParcial2DbContext, Parcial2DbContext>();
             services.AddTransient<IActorDAO, ActorDAO>();
             services.AddTransient<IPeliculaDAO, PeliculaDAO>();
@@ -46,6 +46,9 @@ namespace Parcial2UCAB
                 app.UseDeveloperExceptionPage();
 
             }
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Parcial2UCAB v1"));
 
             app.UseHttpsRedirection();
 

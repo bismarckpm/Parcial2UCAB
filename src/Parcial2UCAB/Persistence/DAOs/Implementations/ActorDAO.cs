@@ -16,7 +16,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
         public readonly IParcial2DbContext _context;
         private readonly ILogger<ActorDAO> _logger;
 
-        public ActorDAO(Parcial2DbContext context, ILogger<ActorDAO> logger)
+        public ActorDAO(IParcial2DbContext context, ILogger<ActorDAO> logger)
         {
             _context = context;
             _logger = logger;
@@ -33,7 +33,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
                     FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
+                    FotoURL = request.FotoURL,
+                    Tipo = request.Tipo
                 };
 
                 _context.Actores.Add(entity);
@@ -62,7 +63,9 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
                     FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
+                    FotoURL = request.FotoURL,
+                    Tipo = request.Tipo
+                   
                 };
 
                 _context.Actores.Update(entity);
@@ -92,7 +95,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                       Id = x.Id,
                       Nombre = x.Nombre,
                       Biografia = x.Biografia,
-                      Foto = x.FotoURL
+                      Foto = x.FotoURL,
+                      Tipo = x.Tipo
                   });
 
                 return await data.SingleAsync();
