@@ -11,43 +11,46 @@ namespace Parcial2UCAB.Utilities
             var regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
             return regex.IsMatch(email.Trim());
         }
-
+        
         public static string Ajustar(string palabra)
         {
             var actualCount = 0;
             var palabraajustada = string.Empty;
+            var tamanopalabra = palabra.Length;
 
-            if (ConNuevaLinea(palabra)) return palabra;
+            if (palabra == "\n") return palabra;
 
-            if (ConEspacioONull(palabra)) return string.Empty;
+            if ((string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra))) return string.Empty;
 
             foreach (var caracter in palabra)
             {
                 palabraajustada = palabraajustada + Convert.ToString(caracter);
 
-                if (ConEspacioONuevaLinea(caracter)) continue;
+                if ( char.IsWhiteSpace(caracter) && (caracter == '\n')) continue;
 
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
+                if (caracter.ToString(CultureInfo.InvariantCulture) == "\n") continue;
 
                 actualCount++;
 
-                if (actualCount == palabra.Length)
+                if (actualCount == tamanopalabra)
                     palabraajustada += "\n";
             }
 
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
+            palabraajustada = ObtenerPalabraEnvuelta(palabraajustada);
 
             return palabraajustada;
         }
 
-        private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
+        #region Metodos Privados
+
+        private static string ObtenerPalabraEnvuelta(string palabraajustada)
         {
             var _palabraajustada = palabraajustada;
             var contadorEspacios = 0;
 
             for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
             {
-                if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
+                if (palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture) == "\n")
                     for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
                     {
                         if (char.IsWhiteSpace(palabraajustada[inCounter]))
@@ -58,7 +61,7 @@ namespace Parcial2UCAB.Utilities
 
                 if (contadorEspacios <= 0) continue;
 
-                _palabraajustada = RemoverEspaciosEnBlancoPalabraAjustada(palabraajustada, contadorSalida, contadorEspacios);
+                _palabraajustada = palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
 
                 contadorEspacios = 0;
             }
@@ -66,24 +69,6 @@ namespace Parcial2UCAB.Utilities
             return _palabraajustada;
         }
 
-        private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
-        {
-            return palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
-        }
-
-        private static bool ConNuevaLinea(string palabra)
-        {
-            return palabra == "\n";
-        }
-
-        private static bool ConEspacioONull(string palabra)
-        {
-            return (string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra));
-        }
-
-        private static bool ConEspacioONuevaLinea(char wrd)
-        {
-            return char.IsWhiteSpace(wrd) && (wrd == '\n');
-        }
+        #endregion
     }
 }
