@@ -28,13 +28,15 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
             var result = Guid.Empty;
             try
             {
-                var entity = new Actor()
-                {
-                    Nombre = request.Nombre + " " + request.Apellido,
-                    Biografia = request.Biografia,
-                    FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
-                };
+                
+                 var entity = new Actor()
+                   {
+                       Nombre = request.Nombre + " " + request.Apellido,
+                       Biografia = request.Biografia,
+                       Tipologia = request.Tipologia,
+                       FechaNacimiento = request.FechaNacimiento,
+                       FotoURL = request.FotoURL
+                   };
 
                 _context.Actores.Add(entity);
                 result = entity.Id;
@@ -49,6 +51,9 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
             }
             return result;
         }
+
+       
+
 
         public async Task<Guid> UpdateActor(ActorRequest request)
         {
