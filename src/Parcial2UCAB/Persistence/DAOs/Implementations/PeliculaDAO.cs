@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Parcial2UCAB.Utilities;
+using Parcial2UCAB.Controllers;
 
 namespace Parcial2UCAB.Persistence.DAOs.Implementations
 {
@@ -108,6 +109,21 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     ex.Message);
                 throw;
             }
+        }
+
+        public Task<Guid> CreateTipoPelicula(PeliculaRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Guid> UpdateTipoPelicula(PeliculaRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Guid> UpdateTipoPelicula(TipoPeliculaRequest request)
+        {
+            throw new NotImplementedException();
         }
     }
 }
