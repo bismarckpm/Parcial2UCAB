@@ -11,5 +11,7 @@ namespace Parcial2UCAB.Responses
         public bool EnCartelera { get; set; }
         public DateTime FechaEstreno { get; set; }
         public List<GeneroResponse> Generos { get; set; }
+
+        public string formato {get;set;}
     }
 }

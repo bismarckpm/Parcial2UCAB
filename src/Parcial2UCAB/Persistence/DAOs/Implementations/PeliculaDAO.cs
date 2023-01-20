@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Reflection.Metadata;
+using Microsoft.Extensions.Logging;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Persistence.Database;
 using Parcial2UCAB.Persistence.Entities;
@@ -33,6 +34,11 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 var entity = new Pelicula();
                 entity.Titulo = Util.Ajustar(request.Titulo);
                 entity.EnCartelera = request.EnCartelera;
+                if( request.formato == "2D" | request.formato == "3D" | request.formato == "4DX"){
+                 entity.formato = request.formato;
+                }else{
+                    throw new InvalidOperationException("Formato invalido");
+                }
                 var generos = new List<Genero>();
                 foreach (var gen in request.Generos)
                 {
@@ -97,7 +103,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                       Generos = x.Generos.Select(k => new GeneroResponse
                       {
                           Nombre = k.Nombre
-                      }).ToList()
+                      }).ToList(),
+                      formato = x.formato
                   });
 
                 return await data.ToListAsync();

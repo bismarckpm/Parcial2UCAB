@@ -8,6 +8,8 @@ using Microsoft.OpenApi.Models;
 using Parcial2UCAB.Persistence.DAOs.Implementations;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Persistence.Database;
+using Microsoft.OpenApi.Models;
+
 
 namespace Parcial2UCAB
 {
@@ -27,15 +29,15 @@ namespace Parcial2UCAB
             services.AddControllers();
             services.AddDbContext<Parcial2DbContext>(options =>
             options.UseNpgsql(Configuration["DBConnectionString"], x => x.UseNetTopologySuite()));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServicesDeskUcabWs", Version = "v1" });
+            });
             services.AddTransient<IParcial2DbContext, Parcial2DbContext>();
             services.AddTransient<IActorDAO, ActorDAO>();
             services.AddTransient<IPeliculaDAO, PeliculaDAO>();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parcial2UCAB", Version = "v1" });
-            });
-
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +46,11 @@ namespace Parcial2UCAB
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Foo API V1");
+    });
 
             }
 

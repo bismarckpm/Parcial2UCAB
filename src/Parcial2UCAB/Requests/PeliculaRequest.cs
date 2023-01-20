@@ -11,5 +11,6 @@ namespace Parcial2UCAB.Requests
         public DateTime FechaEstreno { get; set; }
         public List<GeneroRequest> Generos { get; set; }
         public List<PeliculaActorRequest> PeliculaActor { get; set; }
+        public string formato  {get;set;}
     }
 }
