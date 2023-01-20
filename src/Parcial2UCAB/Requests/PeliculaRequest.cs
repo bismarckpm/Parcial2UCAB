@@ -9,6 +9,7 @@ namespace Parcial2UCAB.Requests
         public string Titulo { get; set; }
         public bool EnCartelera { get; set; }
         public DateTime FechaEstreno { get; set; }
+        public string Formato { get; set; }
         public List<GeneroRequest> Generos { get; set; }
         public List<PeliculaActorRequest> PeliculaActor { get; set; }
     }

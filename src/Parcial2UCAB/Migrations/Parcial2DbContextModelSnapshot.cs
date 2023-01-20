@@ -113,6 +113,9 @@ namespace Parcial2UCAB.Migrations
                     b.Property<DateTime>("FechaEstreno")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("Formato")
+                        .HasColumnType("text");
+
                     b.Property<string>("Titulo")
                         .HasColumnType("text");
 
