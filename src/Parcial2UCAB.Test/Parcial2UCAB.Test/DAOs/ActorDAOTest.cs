@@ -1,4 +1,5 @@
-﻿using Parcial2UCAB.Persistence.DAOs.Implementations;
+﻿using Moq;
+using Parcial2UCAB.Persistence.DAOs.Implementations;
 using Parcial2UCAB.Persistence.Entities;
 using Parcial2UCAB.Requests;
 using System;
@@ -11,6 +12,10 @@ namespace Parcial2UCAB.Test.DAOs
 {
     public class ActorDAOTest
     {
+
+       
+        private readonly ActorDAO actor;
+
         [Fact]
         public void RegistroExitoso()
         {
@@ -28,8 +33,13 @@ namespace Parcial2UCAB.Test.DAOs
        
 
         //act
-       // var result = ActorDAO.CreateActor(entrada);
+        var result = actor.CreateActor(entrada);
 
+
+        }
+        [Fact]
+        public void Exception()
+        {
 
         }
     }
