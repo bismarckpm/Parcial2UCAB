@@ -6,6 +6,7 @@ using Moq;
 using Parcial2UCAB.Controllers;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Requests;
+using Parcial2UCAB.Responses;
 
 namespace Parcial2UCAB.Test.Controllers
 {
@@ -47,6 +48,82 @@ namespace Parcial2UCAB.Test.Controllers
                     .ThrowsAsync(new Exception());
 
                 var result = await _controller.CreatePelicula(new PeliculaRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
+        [Fact]
+        public async Task UpdatePlicula()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                    .ReturnsAsync(new Guid());
+
+                var result = await _controller.UpdatePelicula(new PeliculaRequest());
+
+                Assert.IsType<Guid>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
+
+        [Fact]
+        public async Task ThrowUpdatePelicula()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdatePelicula(new PeliculaRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+
+        }
+
+        [Fact]
+        public async Task GetPeliculaNombre()
+        {
+
+            try
+            {
+                _daoMock
+                    .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+                    .ReturnsAsync(new List<PeliculaResponse>());
+
+                var result = await _controller.GetPelicula("Ana Peña");
+
+                Assert.IsType<List<PeliculaResponse>>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
+        [Fact]
+        public async Task ThrowGetPeliculaNombre()
+        {
+
+            try
+            {
+                _daoMock
+                    .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.GetPelicula("Esta pelicula no existe");
             }
             catch (Exception ex)
             {
