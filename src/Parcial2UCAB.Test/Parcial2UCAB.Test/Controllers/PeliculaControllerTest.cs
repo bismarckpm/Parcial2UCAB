@@ -6,6 +6,7 @@ using Moq;
 using Parcial2UCAB.Controllers;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Requests;
+using Parcial2UCAB.Responses;
 
 namespace Parcial2UCAB.Test.Controllers
 {
@@ -53,5 +54,89 @@ namespace Parcial2UCAB.Test.Controllers
                 Assert.NotNull(ex);
             }
         }
+
+        /// <summary>
+        /// Prueba Update pelicula
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task UpdatePelicula()
+        {
+            _daoMock
+                .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdatePelicula(new PeliculaRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+
+        /// <summary>
+        /// Prueba en la excepcion de updatae pelicula
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task ExceptionUpdatePelicula()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdatePelicula(new PeliculaRequest());
+            }
+
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
+        /// <summary>
+        /// Prueba de get pelicula
+        /// </summary>
+        /// <returns></returns>
+        [Fact]
+        public async Task GetPelicula()
+        {
+            try
+            {
+                _daoMock
+               .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+               .ReturnsAsync(new List<Responses.PeliculaResponse>());
+
+                var result = await _controller.GetPelicula("Black Panter");
+
+                Assert.IsType<Guid>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
+
+        [Fact]
+        public async Task ExceptionGetPelicula()
+        {
+            try
+            {
+                _daoMock
+               .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+               .ThrowsAsync(new Exception());
+
+                var result = await _controller.GetPelicula("Black Panter");
+
+                Assert.IsType<Guid>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+
+        }
+
+
     }
 }
