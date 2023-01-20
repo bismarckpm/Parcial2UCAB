@@ -39,6 +39,16 @@ namespace Parcial2UCAB.Test.Controllers
         }
 
         [Fact]
+        public async Task ThrowExceptionWhenCreateActor()
+        {
+            _daoMock
+                .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
+                .ThrowsAsync(new Exception());
+
+            await Assert.ThrowsAsync<Exception>(() => _controller.CreateActor(new ActorRequest()));
+        }
+        
+        [Fact]
         public async Task GetActor()
         {
             var actorId = Guid.NewGuid();
@@ -50,5 +60,39 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<ActorResponse>(result);
         }
+
+        [Fact]
+        public async Task ThrowExceptionWhenGetActor()
+        {
+            var actorId = Guid.NewGuid();
+            _daoMock
+                .Setup(x => x.GetActor(It.IsAny<Guid>()))
+                .ThrowsAsync(new Exception());
+
+            await Assert.ThrowsAsync<Exception>(() => _controller.GetActor(actorId));
+        }
+
+        [Fact]
+        public async Task UpdateActor()
+        {
+            _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdateActor(new ActorRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+
+        [Fact]
+        public async Task ThrowExceptionWhenUpdateActor()
+        {
+            _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ThrowsAsync(new Exception());
+
+            await Assert.ThrowsAsync<Exception>(() => _controller.UpdateActor(new ActorRequest()));
+        }
+        
     }
 }

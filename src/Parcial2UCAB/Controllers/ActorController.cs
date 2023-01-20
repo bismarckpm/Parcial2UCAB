@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Parcial2UCAB.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ActorController : ControllerBase
     {
         private readonly IActorDAO _actorDAO;
@@ -26,6 +28,7 @@ namespace Parcial2UCAB.Controllers
             {
                 if (request != null)
                     result = await _actorDAO.CreateActor(request);
+                
             }
             catch (Exception)
             {
