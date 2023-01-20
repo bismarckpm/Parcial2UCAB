@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\..\..\..\Migrations\20230120230043_PeliculaFormato.cs" Link="Migrations\20230120230043_PeliculaFormato.cs" />
-    <Compile Include="..\..\..\..\..\..\..\..\Migrations\20230120230043_PeliculaFormato.Designer.cs" Link="Migrations\20230120230043_PeliculaFormato.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Exceptions\" />
   </ItemGroup>
 
