@@ -11,4 +11,12 @@ namespace Parcial2UCAB.Persistence.Entities
         public ICollection<PeliculaActor> PeliculasActor { get; set; }
         public string FotoURL { get; set; }
     }
+
+    public enum TypeActor
+    {
+        Protagonista,
+        Reparto,
+        Secundario,
+        PequeñasPartes
+    }
 }
