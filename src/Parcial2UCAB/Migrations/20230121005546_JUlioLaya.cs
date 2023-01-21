@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Parcial2UCAB.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class JUlioLaya : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,15 +11,15 @@ namespace Parcial2UCAB.Migrations
                 name: "Actores",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nombre = table.Column<string>(type: "text", nullable: true),
-                    Biografia = table.Column<string>(type: "text", nullable: true),
-                    FechaNacimiento = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    FotoURL = table.Column<string>(type: "text", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Biografia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FotoURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,12 +30,12 @@ namespace Parcial2UCAB.Migrations
                 name: "Generos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nombre = table.Column<string>(type: "text", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,14 +46,14 @@ namespace Parcial2UCAB.Migrations
                 name: "Peliculas",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Titulo = table.Column<string>(type: "text", nullable: true),
-                    EnCartelera = table.Column<bool>(type: "boolean", nullable: false),
-                    FechaEstreno = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EnCartelera = table.Column<bool>(type: "bit", nullable: false),
+                    FechaEstreno = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,8 +64,8 @@ namespace Parcial2UCAB.Migrations
                 name: "GeneroPelicula",
                 columns: table => new
                 {
-                    GenerosId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PeliculasId = table.Column<Guid>(type: "uuid", nullable: false)
+                    GenerosId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PeliculasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,15 +88,15 @@ namespace Parcial2UCAB.Migrations
                 name: "PeliculasActor",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    PeliculaId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ActorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Personaje = table.Column<string>(type: "text", nullable: true),
-                    Orden = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    CreatedBy = table.Column<string>(type: "text", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "text", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PeliculaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ActorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Personaje = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Orden = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

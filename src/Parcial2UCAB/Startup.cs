@@ -26,7 +26,7 @@ namespace Parcial2UCAB
 
             services.AddControllers();
             services.AddDbContext<Parcial2DbContext>(options =>
-            options.UseNpgsql(Configuration["DBConnectionString"], x => x.UseNetTopologySuite()));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IParcial2DbContext, Parcial2DbContext>();
             services.AddTransient<IActorDAO, ActorDAO>();
             services.AddTransient<IPeliculaDAO, PeliculaDAO>();
