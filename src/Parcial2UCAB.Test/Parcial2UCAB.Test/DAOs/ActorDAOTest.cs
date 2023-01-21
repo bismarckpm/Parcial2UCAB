@@ -26,7 +26,7 @@ namespace Parcial2UCAB.Test.DAOs
                 _mockActorDAO.Object);
             }
             [Fact]
-            public async Task CreateActor_Exception()
+            public async Task CrearActor()
             {
                 var respuesta = new ActorRequest();
                 _mockActorDAO.Setup(x => x.CreateActor(respuesta)).Throws(new
@@ -35,7 +35,7 @@ namespace Parcial2UCAB.Test.DAOs
                 _controller.CreateActor(respuesta));
             }
             [Fact]
-            public async Task CreateActor_Returns_Guid()
+            public async Task CreateActor_ID()
             {
                 var respuesta = new ActorRequest();
                 var expecion = new Guid();
@@ -46,7 +46,7 @@ namespace Parcial2UCAB.Test.DAOs
             }
            
             [Fact]
-            public async Task UpdateActor_Guid()
+            public async Task ActualizarActor()
             {
                 var respuesta = new ActorRequest();
                 var expecion = new Guid();
@@ -56,7 +56,7 @@ namespace Parcial2UCAB.Test.DAOs
                 Assert.Equal(expecion, resultado);
             }
             [Fact]
-            public async Task UpdateActor_Exception()
+            public async Task ActualizarActorExcepcion()
             {
                 var respuesta = new ActorRequest();
                 _mockActorDAO.Setup(x => x.UpdateActor(respuesta)).Throws(new
@@ -65,7 +65,7 @@ namespace Parcial2UCAB.Test.DAOs
                 _controller.UpdateActor(respuesta));
             }
             [Fact]
-            public async Task GetActor_Response()
+            public async Task Actor()
             {
                 var actorId = new Guid();
                 var expecion = new ActorResponse();
@@ -75,7 +75,7 @@ namespace Parcial2UCAB.Test.DAOs
                 Assert.Equal(expecion, respuesta);
             }
             [Fact]
-            public async Task GetActor_Exception()
+            public async Task ExepciondeActor()
             {
                 var actorId = new Guid();
                 _mockActorDAO.Setup(x => x.GetActor(actorId)).Throws(new
