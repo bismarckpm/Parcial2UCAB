@@ -21,6 +21,21 @@ namespace Parcial2UCAB.Utilities
 
             if (ConEspacioONull(palabra)) return string.Empty;
 
+
+            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(PalabraAjustar(palabra));
+
+            return palabraajustada;
+        }
+
+        /// <summary>
+        /// Extraccion del for por un metodo
+        /// </summary>
+        /// <param name="palabra"></param>
+        /// <returns></returns>
+        public static string PalabraAjustar(string palabra)
+        {
+            var actualCount = 0;
+            var palabraajustada = string.Empty; 
             foreach (var caracter in palabra)
             {
                 palabraajustada = palabraajustada + Convert.ToString(caracter);
@@ -33,10 +48,8 @@ namespace Parcial2UCAB.Utilities
 
                 if (actualCount == palabra.Length)
                     palabraajustada += "\n";
+
             }
-
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
-
             return palabraajustada;
         }
 
