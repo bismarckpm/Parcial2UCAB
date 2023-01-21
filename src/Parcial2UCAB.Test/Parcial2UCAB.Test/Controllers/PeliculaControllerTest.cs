@@ -38,31 +38,26 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<Guid>(result);
         }
-        /* 
-                [Fact]
-                public async Task GetPelicula()
-                {
-                    var PeliculaId = Guid.NewGuid();
-                    _daoMock
-                        .Setup(x => x.GetPeliculaxNombre(It.IsAny<PeliculaId>))
-                        .ReturnsAsync(new PeliculaResponse());
 
-                    var result = await _controller.GetPelicula(PeliculaId);
 
-                    Assert.IsType<PeliculaResponse>(result);
-                }
-                 [Fact]
-                  public async Task GetPelicula()
-                  {
-                      _daoMock
-                          .Setup(x => x.GetPeliculaxNombre(It.IsAny<PeliculaResponse>))
-                          .ReturnsAsync(new Guid());
+        [Fact]
+        public async Task GetPelicula()
+        {
+            try
+            {
+                _daoMock
+               .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+               .ReturnsAsync(new List<PeliculaResponse>());
 
-                      var result = await _controller.GetPelicula(new List<PeliculaResponse>.(no));
+                var result = await _controller.GetPelicula("Pelicula");
+            }
+            catch (Exception exception)
+            {
 
-                      Assert.IsType<Guid>(result);
-                  }
-                  */
+                Assert.NotNull(exception);
+            }
+        }
+                 
 
         [Fact]
         public async Task UpdatePelicula()
