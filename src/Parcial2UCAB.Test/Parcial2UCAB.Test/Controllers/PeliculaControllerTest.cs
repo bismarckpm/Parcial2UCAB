@@ -89,21 +89,13 @@ namespace Parcial2UCAB.Test.Controllers
         public async Task GetPelicula()
         {
             var nombrePelicula = "La mascara de pedro";
-            try
-            {
                 _daoMock
                     .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
-                    .ThrowsAsync(new Exception());
+                    .ReturnsAsync((new List<PeliculaResponse>()));
 
                 var result = await _controller.GetPelicula(nombrePelicula);
-                var application = new ApplicationResponse<List<PeliculaResponse>>();
 
-                Assert.IsType(application.GetType(), result.GetType());
-            }
-            catch (Exception ex)
-            {
-                Assert.NotNull(ex);
-            };
+                Assert.IsType<List<PeliculaResponse>>(result);
         }
 
 
