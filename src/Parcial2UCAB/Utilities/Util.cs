@@ -6,84 +6,80 @@ namespace Parcial2UCAB.Utilities
 {
     public static class Util
     {
-        public static bool IsValidEmail(string email)
-        {
-            var regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-            return regex.IsMatch(email.Trim());
-        }
-
+        
         public static string Ajustar(string palabra)
         {
-            var actualCount = 0;
-            var palabraajustada = string.Empty;
+            var count = 0;
+            var p_ajustada = string.Empty;
+            
+            if (NuevaLinea(palabra)) return palabra;
 
-            if (ConNuevaLinea(palabra)) return palabra;
-
-            if (ConEspacioONull(palabra)) return string.Empty;
+            if (EspacioONull(palabra)) return string.Empty;
 
             foreach (var caracter in palabra)
             {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
+                p_ajustada = p_ajustada + Convert.ToString(caracter);
 
-                if (ConEspacioONuevaLinea(caracter)) continue;
+                if (Espacio_NLinea(caracter)) continue;
 
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
+                if (NuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
 
-                actualCount++;
+                count++;
 
-                if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
+                if (count == palabra.Length)
+                    p_ajustada += "\n";
             }
 
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
+            p_ajustada = ObtenePalabraValida(p_ajustada);
 
-            return palabraajustada;
+            return p_ajustada;
         }
 
-        private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
+        private static string ObtenePalabraValida(string p_ajustada)
         {
-            var _palabraajustada = palabraajustada;
-            var contadorEspacios = 0;
+            var _p = p_ajustada;
+            var Espacios = 0;
 
-            for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
+            for (var Salida = 0; Salida < p_ajustada.Length; Salida++)
             {
-                if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
-                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
+                if (NuevaLinea(p_ajustada[Salida].ToString(CultureInfo.InvariantCulture)))
+                    for (var i = Salida + 1; i < p_ajustada.Length; i++)
                     {
-                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
-                            contadorEspacios++;
+                        if (char.IsWhiteSpace(p_ajustada[i]))
+                            Espacios++;
                         else
                             break;
                     }
 
-                if (contadorEspacios <= 0) continue;
+                if (Espacios <= 0) continue;
 
-                _palabraajustada = RemoverEspaciosEnBlancoPalabraAjustada(palabraajustada, contadorSalida, contadorEspacios);
+                _p = RemoverEspacios(p_ajustada, Salida, Espacios);
 
-                contadorEspacios = 0;
+                Espacios = 0;
             }
 
-            return _palabraajustada;
+            return _p;
         }
 
-        private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
+        private static string RemoverEspacios(string p_ajustada, int Salida, int Espacios)
         {
-            return palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
+            return p_ajustada.Remove(Salida + 1, Espacios);
         }
 
-        private static bool ConNuevaLinea(string palabra)
+        private static bool NuevaLinea(string palabra)
         {
             return palabra == "\n";
         }
 
-        private static bool ConEspacioONull(string palabra)
+        private static bool EspacioONull(string palabra)
         {
             return (string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra));
         }
 
-        private static bool ConEspacioONuevaLinea(char wrd)
+        private static bool Espacio_NLinea(char wrd)
         {
             return char.IsWhiteSpace(wrd) && (wrd == '\n');
         }
+        
     }
 }
