@@ -122,6 +122,9 @@ namespace Parcial2UCAB.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("typeFormato")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Peliculas");

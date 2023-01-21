@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
+using Parcial2UCAB.Responses;
+using Parcial2UCAB.Persistence.Entities;
 
 namespace Parcial2UCAB.Requests
 {
@@ -11,5 +13,6 @@ namespace Parcial2UCAB.Requests
         public DateTime FechaEstreno { get; set; }
         public List<GeneroRequest> Generos { get; set; }
         public List<PeliculaActorRequest> PeliculaActor { get; set; }
+        public Formato typeFormato { get; set; }
     }
 }

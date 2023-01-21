@@ -10,8 +10,8 @@ using Parcial2UCAB.Persistence.Database;
 namespace Parcial2UCAB.Migrations
 {
     [DbContext(typeof(Parcial2DbContext))]
-    [Migration("20230120222024_Initial_Migration")]
-    partial class Initial_Migration
+    [Migration("20230121003904_Migration_Update_Formato")]
+    partial class Migration_Update_Formato
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,6 +123,9 @@ namespace Parcial2UCAB.Migrations
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("typeFormato")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Parcial2UCAB.Migrations
 {
-    public partial class Initial_Migration : Migration
+    public partial class Migration_Update_Formato : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,7 @@ namespace Parcial2UCAB.Migrations
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EnCartelera = table.Column<bool>(type: "bit", nullable: false),
                     FechaEstreno = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    typeFormato = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
