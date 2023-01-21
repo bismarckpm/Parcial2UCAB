@@ -57,7 +57,23 @@ namespace Parcial2UCAB.Test.Controllers
                 Assert.NotNull(exception);
             }
         }
-                 
+        [Fact]
+        public async Task ThrowGetPelicula()
+        {
+            try
+            {
+                _daoMock
+               .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+               .ReturnsAsync(new List<PeliculaResponse>());
+
+                var result = await _controller.GetPelicula("Pelicula");
+            }
+            catch (Exception exception)
+            {
+
+                Assert.NotNull(exception);
+            }
+        }
 
         [Fact]
         public async Task UpdatePelicula()
