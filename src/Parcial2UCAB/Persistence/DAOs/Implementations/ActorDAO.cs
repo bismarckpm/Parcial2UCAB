@@ -16,7 +16,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
         public readonly IParcial2DbContext _context;
         private readonly ILogger<ActorDAO> _logger;
 
-        public ActorDAO(Parcial2DbContext context, ILogger<ActorDAO> logger)
+        public ActorDAO(IParcial2DbContext context, ILogger<ActorDAO> logger)
         {
             _context = context;
             _logger = logger;
