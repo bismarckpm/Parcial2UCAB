@@ -38,22 +38,22 @@ namespace Parcial2UCAB.Test.DAOs
             public async Task CreateActor_Returns_Guid()
             {
                 var respuesta = new ActorRequest();
-                var expected = new Guid();
+                var expecion = new Guid();
                 _mockActorDAO.Setup(x => x.CreateActor(respuesta)).ReturnsAsync
-                (expected);
+                (expecion);
                 var resultado = await _controller.CreateActor(respuesta);
-                Assert.Equal(expected, resultado);
+                Assert.Equal(expecion, resultado);
             }
            
             [Fact]
             public async Task UpdateActor_Guid()
             {
                 var respuesta = new ActorRequest();
-                var expected = new Guid();
+                var expecion = new Guid();
                 _mockActorDAO.Setup(x => x.UpdateActor(respuesta)).ReturnsAsync
-                (expected);
+                (expecion);
                 var resultado = await _controller.UpdateActor(respuesta);
-                Assert.Equal(expected, resultado);
+                Assert.Equal(expecion, resultado);
             }
             [Fact]
             public async Task UpdateActor_Exception()
@@ -68,11 +68,11 @@ namespace Parcial2UCAB.Test.DAOs
             public async Task GetActor_Response()
             {
                 var actorId = new Guid();
-                var expected = new ActorResponse();
+                var expecion = new ActorResponse();
                 _mockActorDAO.Setup(x => x.GetActor(actorId)).ReturnsAsync
-                (expected);
+                (expecion);
                 var respuesta = await _controller.GetActor(actorId);
-                Assert.Equal(expected, respuesta);
+                Assert.Equal(expecion, respuesta);
             }
             [Fact]
             public async Task GetActor_Exception()
