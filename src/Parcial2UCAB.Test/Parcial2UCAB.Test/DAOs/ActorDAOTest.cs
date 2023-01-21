@@ -8,6 +8,7 @@ using Parcial2UCAB.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace Parcial2UCAB.Test.DAOs
 {
     public class ActorDAOTest
     {
-         
+
         Mock<IParcial2DbContext> context;
 
         private readonly ActorDAO actor;
@@ -23,21 +24,22 @@ namespace Parcial2UCAB.Test.DAOs
         [Fact]
         public void RegistroExitoso()
         {
-            ActorRequest entrada = new ActorRequest()
-        {
+
+            var entity = new ActorRequest
+            {
                 Nombre = "Jhon Martinez",
-              //  Apellido = "dbajdbsjdba",
+                Apellido = "dbajdbsjdba",
                 Tipologia = "Protagonista",
                 Biografia = "Jhon Martinez Biografia",
                 FechaNacimiento = DateTime.Parse("10-04-1980"),
-                FotoURL= "xzbczbcbx"
-
+                FotoURL = "xzbczbcbx"
             };
 
-       
 
-        //act
-        var result = actor.CreateActor(entrada);
+
+
+            //act
+            var result = actor.CreateActor(entity);
 
 
         }
@@ -49,7 +51,7 @@ namespace Parcial2UCAB.Test.DAOs
             {
 
                 Nombre = "Jhon Martinez",
-                 Apellido = "dbajdbsjdba",
+                Apellido = "dbajdbsjdba",
                 Tipologia = "Protagonista",
                 Biografia = "Jhon Martinez Biografia",
                 FechaNacimiento = DateTime.Parse("10-1980"),
@@ -59,15 +61,15 @@ namespace Parcial2UCAB.Test.DAOs
             context.Setup(set => set.DbContext.SaveChanges()).Throws(new Exception());
             Assert.Throws<Exception>(() => actor.CreateActor(entity));
         }
-       
+
+
+        [Fact]
+        public async Task ExceptionGET()
+        {
+            var ex = await Assert.ThrowsAsync<NullReferenceException>(() => actor.GetActor(It.IsAny<Guid>()));
+
+            Assert.IsType<NullReferenceException>(ex);
+            Assert.Contains("Nombre de la pelicula requerido.", ex.Message);
         }
-
-        
-
-
-
-
-
-    }
     }
 }
