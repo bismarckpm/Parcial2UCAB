@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Parcial2UCAB.Persistence.Database;
@@ -9,9 +10,10 @@ using Parcial2UCAB.Persistence.Database;
 namespace Parcial2UCAB.Migrations
 {
     [DbContext(typeof(Parcial2DbContext))]
-    partial class Parcial2DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230121002910_TipoPersonaje")]
+    partial class TipoPersonaje
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,9 +143,6 @@ namespace Parcial2UCAB.Migrations
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("text");
-
-                    b.Property<int>("LineasPersonaje")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Orden")
                         .HasColumnType("integer");

@@ -25,6 +25,8 @@ namespace Parcial2UCAB.Test.DataSeed
                             ActorId= new Guid("47929024-b86e-41cd-b459-733687123d98"),
                             PeliculaId = new Guid("5c4b2c90-d9ea-41ec-93d4-1e4abb42f561"),
                             Personaje = "Pedro",
+                            TipoPersonaje = "Protagonista",
+                            LineasPersonaje = 150,
                             Orden = 1,
                             Pelicula = new Pelicula
                             {
@@ -58,6 +60,8 @@ namespace Parcial2UCAB.Test.DataSeed
                             ActorId = new Guid("47929024-b86e-41cd-b459-733687123d98"),
                             PeliculaId = new Guid("870b6445-cf05-4b87-9ef8-96a759666a8c"),
                             Personaje = "Katherina",
+                            TipoPersonaje = "Protagonista",
+                            LineasPersonaje = 200,
                             Orden = 1,
                             Pelicula = new Pelicula
                             {
@@ -81,6 +85,8 @@ namespace Parcial2UCAB.Test.DataSeed
                             ActorId = new Guid("47929024-b86e-41cd-b459-733687123d98"),
                             PeliculaId = new Guid("a0b34ab6-3fb7-4d3b-ad33-065521a528eb"),
                             Personaje = "La Bestia",
+                            TipoPersonaje = "Protagonista",
+                            LineasPersonaje = 200,
                             Orden = 1,
                             Pelicula = new Pelicula
                             {
@@ -119,6 +125,8 @@ namespace Parcial2UCAB.Test.DataSeed
                             ActorId= new Guid("b8453690-3c39-4d33-85cf-14409e15098a"),
                             PeliculaId = new Guid("c0556a2f-c581-49d6-9914-cafe90ad179c"),
                             Personaje = "Maria",
+                            TipoPersonaje = "Secundario",
+                            LineasPersonaje = 80,
                             Orden = 1,
                             Pelicula = new Pelicula
                             {
