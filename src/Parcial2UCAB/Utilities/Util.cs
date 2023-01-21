@@ -14,7 +14,6 @@ namespace Parcial2UCAB.Utilities
 
         public static string Ajustar(string palabra)
         {
-            var actualCount = 0;
             var palabraajustada = string.Empty;
 
             if (ConNuevaLinea(palabra)) return palabra;
@@ -32,7 +31,7 @@ namespace Parcial2UCAB.Utilities
         /// </summary>
         /// <param name="palabra"></param>
         /// <returns></returns>
-        public static string PalabraAjustar(string palabra)
+        private static string PalabraAjustar(string palabra)
         {
             var actualCount = 0;
             var palabraajustada = string.Empty; 
@@ -61,13 +60,7 @@ namespace Parcial2UCAB.Utilities
             for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
             {
                 if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
-                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
-                    {
-                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
-                            contadorEspacios++;
-                        else
-                            break;
-                    }
+                    contadorEspacios = ContarEspacio(contadorSalida, palabraajustada);
 
                 if (contadorEspacios <= 0) continue;
 
@@ -78,6 +71,25 @@ namespace Parcial2UCAB.Utilities
 
             return _palabraajustada;
         }
+
+
+        private static int ContarEspacio(int contadorSalida, string palabraajustada)
+        {
+            var contadorEspacios = 0;
+
+            for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
+            {
+                if (char.IsWhiteSpace(palabraajustada[inCounter]))
+                    contadorEspacios++;
+                else
+                    break;
+            }
+            return contadorEspacios; 
+
+
+        }
+
+
 
         private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
         {
