@@ -11,7 +11,8 @@ namespace Parcial2UCAB.Responses
         public string Biografia { get; set; }
         public string Foto { get; set; }
         public List<PeliculaResponse> Peliculas { get; set; }
-        public PersonType Type 
+
+        public PersonType Type;
 
     }
 }
