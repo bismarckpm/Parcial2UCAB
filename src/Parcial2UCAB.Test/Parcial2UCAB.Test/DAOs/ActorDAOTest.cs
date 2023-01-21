@@ -1,5 +1,6 @@
 ﻿using Moq;
 using Parcial2UCAB.Persistence.DAOs.Implementations;
+using Parcial2UCAB.Persistence.Database;
 using Parcial2UCAB.Persistence.Entities;
 using Parcial2UCAB.Requests;
 using System;
@@ -12,8 +13,9 @@ namespace Parcial2UCAB.Test.DAOs
 {
     public class ActorDAOTest
     {
+         
+        Mock<IParcial2DbContext> context;
 
-       
         private readonly ActorDAO actor;
 
         [Fact]
@@ -40,6 +42,13 @@ namespace Parcial2UCAB.Test.DAOs
         [Fact]
         public void Exception()
         {
+            //arrage
+            context.Setup(a => a.Actores).Throws(new Exception(""));
+
+            //assert
+            
+            Assert.ThrowsException<>(() => actor.CreateActor());
+            
 
         }
     }
