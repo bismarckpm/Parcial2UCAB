@@ -6,6 +6,7 @@ namespace Parcial2UCAB.Persistence.Entities
     public class Pelicula : BaseEntity
     {
         public string Titulo { get; set; }
+        public string FormatoPeli { get; set; }
         public bool EnCartelera { get; set; }
         public DateTime FechaEstreno { get; set; }
         public ICollection<Genero> Generos { get; set; }

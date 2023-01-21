@@ -33,6 +33,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 var entity = new Pelicula();
                 entity.Titulo = Util.Ajustar(request.Titulo);
                 entity.EnCartelera = request.EnCartelera;
+                entity.FormatoPeli = request.FormatoPeli; 
                 var generos = new List<Genero>();
                 foreach (var gen in request.Generos)
                 {
@@ -94,6 +95,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                       Id = x.Id,
                       Titulo = x.Titulo,
                       EnCartelera = x.EnCartelera,
+                      Formato = x.FormatoPeli,
                       Generos = x.Generos.Select(k => new GeneroResponse
                       {
                           Nombre = k.Nombre
