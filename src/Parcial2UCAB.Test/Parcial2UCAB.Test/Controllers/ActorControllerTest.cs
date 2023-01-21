@@ -81,8 +81,30 @@ namespace Parcial2UCAB.Test.Controllers
                 .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
                 .ThrowsAsync(new Exception());
 
-                 var result = await _controller.CreateActor(new ActorRequest());
-            Assert.IsType<Exception>(result);
+                //  var result = await _controller.CreateActor(new ActorRequest());
+            Assert.ThrowsAsync<Exception>(()=>_controller.CreateActor(new ActorRequest()));
+        }
+
+        [Fact]
+        public async Task GetActorException()
+        {
+            _daoMock
+                .Setup(x => x.GetActor(It.IsAny<Guid>()))
+                .ThrowsAsync(new Exception());
+
+                //  var result = await _controller.CreateActor(new ActorRequest());
+            Assert.ThrowsAsync<Exception>(()=>_controller.GetActor(new Guid()));
+        }
+
+        [Fact]
+        public async Task UpdateActorException()
+        {
+            _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ThrowsAsync(new Exception());
+
+                //  var result = await _controller.CreateActor(new ActorRequest());
+            Assert.ThrowsAsync<Exception>(()=>_controller.UpdateActor(new ActorRequest()));
         }
     }
 }

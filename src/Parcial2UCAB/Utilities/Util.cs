@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Parcial2UCAB.Utilities
 {
@@ -14,16 +15,27 @@ namespace Parcial2UCAB.Utilities
 
         public static string Ajustar(string palabra)
         {
-            var actualCount = 0;
             var palabraajustada = string.Empty;
 
             if (ConNuevaLinea(palabra)) return palabra;
 
             if (ConEspacioONull(palabra)) return string.Empty;
 
+            palabraajustada = ContadorSaltoLineas(palabra);
+
+            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
+
+            return palabraajustada;
+        }
+
+        private static string ContadorSaltoLineas(string palabra)
+        {
+            var actualCount = 0;
+            var resultado = string.Empty;
+            
             foreach (var caracter in palabra)
             {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
+                resultado = resultado + Convert.ToString(caracter);
 
                 if (ConEspacioONuevaLinea(caracter)) continue;
 
@@ -32,12 +44,9 @@ namespace Parcial2UCAB.Utilities
                 actualCount++;
 
                 if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
+                    resultado.Insert(resultado.Length,Environment.NewLine) ;
             }
-
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
-
-            return palabraajustada;
+            return resultado;
         }
 
         private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
@@ -48,13 +57,7 @@ namespace Parcial2UCAB.Utilities
             for (var contadorSalida = 0; contadorSalida < palabraajustada.Length; contadorSalida++)
             {
                 if (ConNuevaLinea(palabraajustada[contadorSalida].ToString(CultureInfo.InvariantCulture)))
-                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
-                    {
-                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
-                            contadorEspacios++;
-                        else
-                            break;
-                    }
+                    contadorEspacios = ContadorEspacio(palabraajustada, contadorSalida);
 
                 if (contadorEspacios <= 0) continue;
 
@@ -66,6 +69,20 @@ namespace Parcial2UCAB.Utilities
             return _palabraajustada;
         }
 
+        private static int ContadorEspacio(string palabraajustada, int contadorSalida)
+        {
+             var resultado = 0;
+                    for (var inCounter = contadorSalida + 1; inCounter < palabraajustada.Length; inCounter++)
+                    {
+                        if (char.IsWhiteSpace(palabraajustada[inCounter]))
+                            resultado++;
+                        else
+                            break;
+                    }
+                    return resultado;
+        }
+
+
         private static string RemoverEspaciosEnBlancoPalabraAjustada(string palabraajustada, int contadorSalida, int contadorEspacios)
         {
             return palabraajustada.Remove(contadorSalida + 1, contadorEspacios);
@@ -73,7 +90,7 @@ namespace Parcial2UCAB.Utilities
 
         private static bool ConNuevaLinea(string palabra)
         {
-            return palabra == "\n";
+            return palabra == Environment.NewLine;
         }
 
         private static bool ConEspacioONull(string palabra)
