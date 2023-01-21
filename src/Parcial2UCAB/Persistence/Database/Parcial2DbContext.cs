@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
+using static Parcial2UCAB.Persistence.Entities.Actor;
 
 namespace Parcial2UCAB.Persistence.Database
 {
@@ -54,6 +55,12 @@ namespace Parcial2UCAB.Persistence.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(Parcial2DbContext).Assembly);
+            modelBuilder
+            .Entity<Actor>()
+            .Property(e => e.tipoActor)
+            .HasConversion(
+            v => v.ToString(),
+            v => (Tipologia)Enum.Parse(typeof(Tipologia), v));
         }
 
         virtual public void ChangeEntityState<TEntity>(TEntity entity, EntityState state)

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Parcial2UCAB.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ActorController : ControllerBase
     {
         private readonly IActorDAO _actorDAO;
