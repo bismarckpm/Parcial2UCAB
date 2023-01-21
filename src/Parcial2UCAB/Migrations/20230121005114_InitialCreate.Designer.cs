@@ -10,7 +10,7 @@ using Parcial2UCAB.Persistence.Database;
 namespace Parcial2UCAB.Migrations
 {
     [DbContext(typeof(Parcial2DbContext))]
-    [Migration("20230120183622_InitialCreate")]
+    [Migration("20230121005114_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -117,6 +117,9 @@ namespace Parcial2UCAB.Migrations
 
                     b.Property<string>("Titulo")
                         .HasColumnType("text");
+
+                    b.Property<int>("Transmision")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp without time zone");

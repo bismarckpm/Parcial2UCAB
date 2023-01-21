@@ -9,7 +9,15 @@ namespace Parcial2UCAB.Responses
         public Guid Id { get; set; }
         public string Titulo { get; set; }
         public bool EnCartelera { get; set; }
+        public Transmi Transmision { get; set; }
         public DateTime FechaEstreno { get; set; }
         public List<GeneroResponse> Generos { get; set; }
+
+        public enum Transmi
+        {
+            Tipo_2D,
+            Tipo_3D,
+            Tipo_4DX
+        }
     }
 }

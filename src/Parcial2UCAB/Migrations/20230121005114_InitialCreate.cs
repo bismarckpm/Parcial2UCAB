@@ -49,6 +49,7 @@ namespace Parcial2UCAB.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Titulo = table.Column<string>(type: "text", nullable: true),
                     EnCartelera = table.Column<bool>(type: "boolean", nullable: false),
+                    Transmision = table.Column<int>(type: "integer", nullable: false),
                     FechaEstreno = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: true),

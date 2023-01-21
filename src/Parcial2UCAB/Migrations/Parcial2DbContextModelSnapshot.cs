@@ -116,6 +116,9 @@ namespace Parcial2UCAB.Migrations
                     b.Property<string>("Titulo")
                         .HasColumnType("text");
 
+                    b.Property<int>("Transmision")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp without time zone");
 
