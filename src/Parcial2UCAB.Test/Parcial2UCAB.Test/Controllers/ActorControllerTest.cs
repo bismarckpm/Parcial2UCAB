@@ -7,6 +7,7 @@ using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Moq;
 using Parcial2UCAB.Requests;
 using Parcial2UCAB.Responses;
+using Microsoft.VisualBasic;
 
 namespace Parcial2UCAB.Test.Controllers
 {
@@ -49,6 +50,68 @@ namespace Parcial2UCAB.Test.Controllers
             var result = await _controller.GetActor(actorId);
 
             Assert.IsType<ActorResponse>(result);
+        }
+
+        [Fact]
+        public async Task UpdateActor()
+        {
+          
+           _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdateActor(new ActorRequest());
+            Assert.IsType<Guid>(result);
+        }
+
+        [Fact]
+        public async Task ThrowCreateActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.CreateActor(new ActorRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        [Fact]
+        public async Task ThrowUpdateActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdateActor(new ActorRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        [Fact]
+        public async Task ThrowGetActorById()
+        {
+            var actorId = Guid.NewGuid();
+            try
+            {
+                _daoMock
+                    .Setup(x => x.GetActor(It.IsAny<Guid>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.GetActor(new Guid());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
         }
     }
 }

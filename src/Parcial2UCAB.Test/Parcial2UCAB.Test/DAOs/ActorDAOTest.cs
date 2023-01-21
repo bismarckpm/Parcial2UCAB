@@ -3,6 +3,7 @@ using Moq;
 using Parcial2UCAB.Persistence.DAOs.Implementations;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Persistence.Database;
+using Parcial2UCAB.Requests;
 using Parcial2UCAB.Test.DataSeed;
 
 namespace Parcial2UCAB.Test.DAOs
@@ -21,11 +22,7 @@ namespace Parcial2UCAB.Test.DAOs
             _contextMock.SetupDbContextData();
         }
 
-        [Fact]
-        public async Task ShouldCreateNewActor()
-        { 
-
-        }
+  
 
 
     }
