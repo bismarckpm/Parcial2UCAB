@@ -32,6 +32,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 {
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
+                    TipoActor = request.TipoDeActor,
                     FechaNacimiento = request.FechaNacimiento,
                     FotoURL = request.FotoURL
                 };
@@ -61,6 +62,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Id = request.Id,
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
+                    TipoActor = request.TipoDeActor,
                     FechaNacimiento = request.FechaNacimiento,
                     FotoURL = request.FotoURL
                 };
@@ -91,6 +93,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                   {
                       Id = x.Id,
                       Nombre = x.Nombre,
+                      TipoDeActor = x.TipoActor,
                       Biografia = x.Biografia,
                       Foto = x.FotoURL
                   });

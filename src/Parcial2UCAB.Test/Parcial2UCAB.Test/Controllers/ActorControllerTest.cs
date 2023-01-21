@@ -7,6 +7,7 @@ using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Moq;
 using Parcial2UCAB.Requests;
 using Parcial2UCAB.Responses;
+using Parcial2UCAB.Persistence.Entities;
 
 namespace Parcial2UCAB.Test.Controllers
 {
@@ -26,7 +27,7 @@ namespace Parcial2UCAB.Test.Controllers
             _controller.ControllerContext.ActionDescriptor = new ControllerActionDescriptor();
         }
 
-        [Fact]
+        [Fact (DisplayName = "Creador Actor")]
         public async Task CreateActor()
         {
             _daoMock
@@ -38,7 +39,7 @@ namespace Parcial2UCAB.Test.Controllers
             Assert.IsType<Guid>(result);
         }
 
-        [Fact]
+        [Fact  (DisplayName = "Obtener Actor")]
         public async Task GetActor()
         {
             var actorId = Guid.NewGuid();
@@ -49,6 +50,26 @@ namespace Parcial2UCAB.Test.Controllers
             var result = await _controller.GetActor(actorId);
 
             Assert.IsType<ActorResponse>(result);
+        }
+
+        [Fact (DisplayName = "Actualizar Actor")]
+        public async Task UpdateActor()
+        {
+            _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ReturnsAsync(new Guid());  
+            var actor = new ActorRequest() 
+                {
+                    Id = new Guid("b8453690-3c39-4d33-85cf-14409e15098a"),
+                    Nombre = "Ana Peña",
+                    Apellido = "Pena",
+                    TipoDeActor = TipoActor.Protagonista,
+                    Biografia = "Biografía de Ana Peña",
+                    FechaNacimiento = DateTime.Parse("12-12-1978"),
+                    FotoURL = ""                    
+                };   
+            var result = await _controller.UpdateActor(actor);
+            Assert.IsType<Guid>(result);
         }
     }
 }
