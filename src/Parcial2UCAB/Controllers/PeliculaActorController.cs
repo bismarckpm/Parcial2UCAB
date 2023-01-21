@@ -8,6 +8,8 @@ using Parcial2UCAB.Requests;
 
 namespace Parcial2UCAB.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PeliculaActorController : ControllerBase
     {
         private readonly IPeliculaActorDAO _PeliculaActorDAO;
