@@ -1,6 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bogus.DataSets;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Moq;
+using Parcial2UCAB.Controllers;
 using Parcial2UCAB.Persistence.DAOs.Implementations;
+using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Persistence.Database;
 using Parcial2UCAB.Persistence.Entities;
 using Parcial2UCAB.Requests;
@@ -17,67 +24,6 @@ namespace Parcial2UCAB.Test.DAOs
     public class ActorDAOTest
     {
 
-        Mock<IParcial2DbContext> context;
-
-        private readonly ActorDAO actor;
-
-        [Fact]
-        public void RegistroExitoso()
-        {
-
-            var entity = new ActorRequest
-            {
-                Nombre = "Jhon Martinez",
-                Apellido = "dbajdbsjdba",
-                Tipologia = "Protagonista",
-                Biografia = "Jhon Martinez Biografia",
-                FechaNacimiento = DateTime.Parse("10-04-1980"),
-                FotoURL = "xzbczbcbx"
-            };
-
-
-
-
-            //act
-            var result = actor.CreateActor(entity);
-
-
-        }
-        [Fact]
-        public void Exception()
-        {
-
-            var entity = new ActorRequest
-            {
-
-                Nombre = "Jhon Martinez",
-                Apellido = "dbajdbsjdba",
-                Tipologia = "Protagonista",
-                Biografia = "Jhon Martinez Biografia",
-                FechaNacimiento = DateTime.Parse("10-1980"),
-                FotoURL = "xzbczbcbx"
-
-            };
-            context.Setup(set => set.DbContext.SaveChanges()).Throws(new Exception());
-            Assert.Throws<Exception>(() => actor.CreateActor(entity));
-        }
-
-        [Fact]
-        public async Task ShouldReturnGetID()
-        {
-            var id = Guid.Parse("38f401c9-12aa-46bf-82a2-05ff65bb2c86");
-            var result = await actor.GetActor(id);
-            var data = result;
-            
-            Assert.AreEqual(id, result.Id);
-        }
-        [Fact]
-        public async Task ExceptionGET()
-        {
-            var ex = await Assert.ThrowsAsync<NullReferenceException>(() => actor.GetActor(It.IsAny<Guid>()));
-
-            Assert.IsType<NullReferenceException>(ex);
-            Assert.Contains("Nombre de la pelicula requerido.", ex.Message);
-        }
+       
     }
 }

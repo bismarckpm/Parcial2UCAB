@@ -11,6 +11,8 @@ namespace Parcial2UCAB.Test.DataSeed
         {
             var actores = new List<Actor>
             {
+                
+                   
                 new Actor
                 {
                     Id = new Guid("47929024-b86e-41cd-b459-733687123d98"),
