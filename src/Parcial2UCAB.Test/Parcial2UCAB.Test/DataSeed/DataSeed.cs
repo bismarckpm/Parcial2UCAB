@@ -49,7 +49,9 @@ namespace Parcial2UCAB.Test.DataSeed
                                         Id= new Guid(),
                                         Nombre = "Drama"
                                     }
-                                }
+                                },
+                                typeFormato = Formato._2D
+                       
                             }
                         },
                         new PeliculaActor
@@ -72,7 +74,9 @@ namespace Parcial2UCAB.Test.DataSeed
                                         Id= new Guid("0cb56acf-7878-450c-874a-c4b28d3ede2e"),
                                         Nombre = "Suspenso"
                                     }
-                                }
+                                },
+                                
+                                typeFormato = Formato._4DX
                             }
                         },
                         new PeliculaActor
@@ -100,7 +104,10 @@ namespace Parcial2UCAB.Test.DataSeed
                                         Id= new Guid("2045c371-eb3c-413f-b2d6-c80544308eec"),
                                         Nombre = "Infantil"
                                     }
-                                }
+                                },
+
+                                typeFormato = Formato._4DX
+
                             }
                         }
                     }
@@ -138,7 +145,9 @@ namespace Parcial2UCAB.Test.DataSeed
                                         Id= new Guid("2045c371-eb3c-413f-b2d6-c80544308eec"),
                                         Nombre = "Infantil"
                                     }
-                                }
+                                },
+
+                                typeFormato = Formato._3D
                             }
                         }
                     }
