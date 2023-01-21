@@ -50,5 +50,18 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<ActorResponse>(result);
         }
+
+        [Fact]
+        public async Task UpdateActor()
+        {
+            var actorId = Guid.NewGuid();
+                 _daoMock
+                .Setup(x => x.GetActor(It.IsAny<Guid>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.GetActor(actorId);
+
+            Assert.IsType<ActorResponse>(result);
+        }
     }
 }

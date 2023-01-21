@@ -44,6 +44,8 @@ namespace Parcial2UCAB
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Parcial2UCAB v1"));
 
             }
 

@@ -23,21 +23,17 @@ namespace Parcial2UCAB.Utilities
 
             foreach (var caracter in palabra)
             {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
+                palabraajustada += Convert.ToString(caracter);
 
-                if (ConEspacioONuevaLinea(caracter)) continue;
+                if (!ConEspacioONuevaLinea(caracter))
+                    actualCount++;
 
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
-
-                actualCount++;
-
-                if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
             }
 
-            palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
+            if (actualCount == palabra.Length)
+                palabraajustada += "\n";
 
-            return palabraajustada;
+            return ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
         }
 
         private static string ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(string palabraajustada)
@@ -78,7 +74,7 @@ namespace Parcial2UCAB.Utilities
 
         private static bool ConEspacioONull(string palabra)
         {
-            return (string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra));
+            return (string.IsNullOrWhiteSpace(palabra));
         }
 
         private static bool ConEspacioONuevaLinea(char wrd)
