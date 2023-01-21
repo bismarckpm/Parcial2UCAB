@@ -14,26 +14,14 @@ namespace Parcial2UCAB.Utilities
 
         public static string Ajustar(string palabra)
         {
-            var actualCount = 0;
             var palabraajustada = string.Empty;
 
             if (ConNuevaLinea(palabra)) return palabra;
 
             if (ConEspacioONull(palabra)) return string.Empty;
 
-            foreach (var caracter in palabra)
-            {
-                palabraajustada = palabraajustada + Convert.ToString(caracter);
-
-                if (ConEspacioONuevaLinea(caracter)) continue;
-
-                if (ConNuevaLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
-
-                actualCount++;
-
-                if (actualCount == palabra.Length)
-                    palabraajustada += "\n";
-            }
+            if (!palabra.Contains("\n"))
+                palabraajustada = palabra+ "\n";
 
             palabraajustada = ObtenePalabraEnvueltaSinEspaciosBlancoInicioLinea(palabraajustada);
 
