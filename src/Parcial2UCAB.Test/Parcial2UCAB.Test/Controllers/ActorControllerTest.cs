@@ -36,6 +36,7 @@ namespace Parcial2UCAB.Test.Controllers
             Assert.IsType<Guid>(result);
         }
 
+		[Fact]
 		public async Task CreateActorException()
 		{
             _daoMock.Setup(x => x.CreateActor(It.IsAny<ActorRequest>())).ThrowsAsync(new Exception());
