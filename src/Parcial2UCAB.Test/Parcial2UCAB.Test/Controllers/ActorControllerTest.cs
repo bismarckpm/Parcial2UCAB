@@ -38,6 +38,21 @@ namespace Parcial2UCAB.Test.Controllers
             Assert.IsType<Guid>(result);
         }
 
+
+        //[Fact]
+        //public async Task CreateActorExcepcion()
+        //{
+        //    _daoMock
+        //        .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
+        //        .ReturnsAsync(new Guid());
+
+        //    var result = await _controller.CreateActor(new ActorRequest());
+
+        //    Assert.Throws<Exception>();
+        //}
+
+
+
         [Fact]
         public async Task GetActor()
         {
@@ -50,5 +65,17 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<ActorResponse>(result);
         }
+
+        [Fact]
+        public async Task UpdateActor()
+        {
+            
+            _daoMock.Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()));
+
+            var result = await _controller.UpdateActor(new ActorRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+
     }
 }
