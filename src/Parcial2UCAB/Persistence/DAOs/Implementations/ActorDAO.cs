@@ -33,7 +33,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
                     FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
+                    FotoURL = request.FotoURL,
+                    tipo = request.tipo
                 };
 
                 _context.Actores.Add(entity);

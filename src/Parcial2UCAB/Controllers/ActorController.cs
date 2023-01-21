@@ -19,6 +19,7 @@ namespace Parcial2UCAB.Controllers
         }
 
         [HttpPost]
+        [Route("Actor/")]
         public async Task<Guid> CreateActor([FromBody] ActorRequest request)
         {
             Guid result;

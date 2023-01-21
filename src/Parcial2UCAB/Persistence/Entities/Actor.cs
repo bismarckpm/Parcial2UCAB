@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Parcial2UCAB.BussinesLogic.Enums;
 
 namespace Parcial2UCAB.Persistence.Entities
 {
@@ -10,5 +11,6 @@ namespace Parcial2UCAB.Persistence.Entities
         public DateTime? FechaNacimiento { get; set; }
         public ICollection<PeliculaActor> PeliculasActor { get; set; }
         public string FotoURL { get; set; }
+        public TipoActor tipo {get; set;}
     }
 }

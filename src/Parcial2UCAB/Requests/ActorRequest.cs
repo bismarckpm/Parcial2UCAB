@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Parcial2UCAB.BussinesLogic.Enums;
 namespace Parcial2UCAB.Requests
 {
     public class ActorRequest
@@ -10,5 +10,6 @@ namespace Parcial2UCAB.Requests
         public string Biografia { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string FotoURL { get; set; }
+        public TipoActor tipo {get; set;}
     }
 }
