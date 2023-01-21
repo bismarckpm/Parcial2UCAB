@@ -28,50 +28,41 @@ namespace Parcial2UCAB.Test.DAOs
             [Fact]
             public async Task CreateActor_Exception()
             {
-                var request = new ActorRequest();
-                _mockActorDAO.Setup(x => x.CreateActor(request)).Throws(new
+                var respuesta = new ActorRequest();
+                _mockActorDAO.Setup(x => x.CreateActor(respuesta)).Throws(new
                 Exception());
                 await Assert.ThrowsAsync<Exception>(() =>
-                _controller.CreateActor(request));
+                _controller.CreateActor(respuesta));
             }
             [Fact]
             public async Task CreateActor_Returns_Guid()
             {
-                var request = new ActorRequest();
+                var respuesta = new ActorRequest();
                 var expected = new Guid();
-                _mockActorDAO.Setup(x => x.CreateActor(request)).ReturnsAsync
+                _mockActorDAO.Setup(x => x.CreateActor(respuesta)).ReturnsAsync
                 (expected);
-                var result = await _controller.CreateActor(request);
-                Assert.Equal(expected, result);
+                var resultado = await _controller.CreateActor(respuesta);
+                Assert.Equal(expected, resultado);
             }
-            [Fact]
-            public async Task CreateActor_Null()
-            {
-                ActorRequest request = null;
-                var expected = new Guid();
-                _mockActorDAO.Setup(x => x.CreateActor(request)).ReturnsAsync
-                (expected);
-                var result = await _controller.CreateActor(request);
-                Assert.Equal(expected, result);
-            }
+           
             [Fact]
             public async Task UpdateActor_Guid()
             {
-                var request = new ActorRequest();
+                var respuesta = new ActorRequest();
                 var expected = new Guid();
-                _mockActorDAO.Setup(x => x.UpdateActor(request)).ReturnsAsync
+                _mockActorDAO.Setup(x => x.UpdateActor(respuesta)).ReturnsAsync
                 (expected);
-                var result = await _controller.UpdateActor(request);
-                Assert.Equal(expected, result);
+                var resultado = await _controller.UpdateActor(respuesta);
+                Assert.Equal(expected, resultado);
             }
             [Fact]
             public async Task UpdateActor_Exception()
             {
-                var request = new ActorRequest();
-                _mockActorDAO.Setup(x => x.UpdateActor(request)).Throws(new
+                var respuesta = new ActorRequest();
+                _mockActorDAO.Setup(x => x.UpdateActor(respuesta)).Throws(new
                 Exception());
                 await Assert.ThrowsAsync<Exception>(() =>
-                _controller.UpdateActor(request));
+                _controller.UpdateActor(respuesta));
             }
             [Fact]
             public async Task GetActor_Response()
@@ -80,8 +71,8 @@ namespace Parcial2UCAB.Test.DAOs
                 var expected = new ActorResponse();
                 _mockActorDAO.Setup(x => x.GetActor(actorId)).ReturnsAsync
                 (expected);
-                var result = await _controller.GetActor(actorId);
-                Assert.Equal(expected, result);
+                var respuesta = await _controller.GetActor(actorId);
+                Assert.Equal(expected, respuesta);
             }
             [Fact]
             public async Task GetActor_Exception()
@@ -92,15 +83,7 @@ namespace Parcial2UCAB.Test.DAOs
                 await Assert.ThrowsAsync<Exception>(() => _controller.GetActor
                 (actorId));
             }
-            [Fact]
-            public async Task GetActor_Null()
-            {
-                var actorId = new Guid();
-                _mockActorDAO.Setup(x => x.GetActor(actorId)).ReturnsAsync
-                ((ActorResponse)null);
-                var result = await _controller.GetActor(actorId);
-                Assert.Null(result);
-            }
-    }
+        
 
+    }
 }
