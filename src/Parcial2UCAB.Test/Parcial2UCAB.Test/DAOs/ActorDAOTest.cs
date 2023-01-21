@@ -62,7 +62,15 @@ namespace Parcial2UCAB.Test.DAOs
             Assert.Throws<Exception>(() => actor.CreateActor(entity));
         }
 
-
+        [Fact]
+        public async Task ShouldReturnGetID()
+        {
+            var id = Guid.Parse("38f401c9-12aa-46bf-82a2-05ff65bb2c86");
+            var result = await actor.GetActor(id);
+            var data = result;
+            
+            Assert.AreEqual(id, result.Id);
+        }
         [Fact]
         public async Task ExceptionGET()
         {
