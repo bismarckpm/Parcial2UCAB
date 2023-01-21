@@ -6,6 +6,7 @@ using Moq;
 using Parcial2UCAB.Controllers;
 using Parcial2UCAB.Persistence.DAOs.Interfaces;
 using Parcial2UCAB.Requests;
+using Parcial2UCAB.Responses;
 
 namespace Parcial2UCAB.Test.Controllers
 {
@@ -47,6 +48,65 @@ namespace Parcial2UCAB.Test.Controllers
                     .ThrowsAsync(new Exception());
 
                 var result = await _controller.CreatePelicula(new PeliculaRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        //eee
+        [Fact]
+        public async Task UpdatePelicula()
+        {
+            _daoMock
+                .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdatePelicula(new PeliculaRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+
+        [Fact]
+        public async Task ThrowUpdatePelicula()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdatePelicula(It.IsAny<PeliculaRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdatePelicula(new PeliculaRequest());
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        //eee
+        [Fact]
+        public async Task GetPeliculaxNombre()
+        {
+            string pelicula = "bob";
+            _daoMock
+                .Setup(x => x.GetPeliculaxNombre(pelicula))
+                .ReturnsAsync(new List<PeliculaResponse>());
+
+            var result = await _controller.GetPelicula(pelicula);
+
+            Assert.IsType<List<PeliculaResponse>>(result);
+        }
+
+        [Fact]
+        public async Task ThrowGetPeliculaxNombre()
+        {
+            try
+            {
+                _daoMock
+                .Setup(x => x.GetPeliculaxNombre(It.IsAny<string>()))
+                .ThrowsAsync(new Exception());
+
+                var resul = await _controller.GetPelicula(It.IsAny<string>());
             }
             catch (Exception ex)
             {
