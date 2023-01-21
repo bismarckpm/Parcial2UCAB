@@ -10,5 +10,12 @@ namespace Parcial2UCAB.Persistence.Entities
         public DateTime FechaEstreno { get; set; }
         public ICollection<Genero> Generos { get; set; }
         public ICollection<PeliculaActor> PeliculasActores { get; set; }
+        public Formatos formato { get; set; }
     }
+    public enum Formatos {
+        F2D,
+        F3D,
+        F4DX
+    }
+
 }
