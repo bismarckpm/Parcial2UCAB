@@ -8,6 +8,20 @@ using Parcial2UCAB.Responses;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
+/////
+//////////
+
+//////////   TIPO DE PELÍCULA LO CREÉ DE FORMA DE QUE SEA ACÁ DONDE SE 
+////  CREE Y SE COLOQUE LO QUE LLAMÓ FORMATO
+///ES DECIR SI ES 
+///2D
+///3D 
+///O 4DX
+
+//////////
+
+
+
 namespace Parcial2UCAB.Controllers
 {
     [ApiController]
