@@ -40,6 +40,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     var value = new Genero();
                     value.Nombre = gen.Nombre;
                     generos.Add(value);
+                    await _context.SaveEfContextChanges("APPUSER");
                 }
                 entity.Generos = generos;
                 _context.Peliculas.Add(entity);
