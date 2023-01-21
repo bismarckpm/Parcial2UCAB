@@ -31,6 +31,7 @@ namespace Parcial2UCAB.Test.DataSeed
                                 Id= new Guid("5c4b2c90-d9ea-41ec-93d4-1e4abb42f561"),
                                 Titulo = "La mascara de pedro",
                                 EnCartelera = true,
+                                formato = Formatos.F2D,
                                 FechaEstreno =  DateTime.Parse("12-12-2021"),
                                 Generos = new List<Genero>()
                                 {
@@ -64,6 +65,7 @@ namespace Parcial2UCAB.Test.DataSeed
                                 Id= new Guid("870b6445-cf05-4b87-9ef8-96a759666a8c"),
                                 Titulo = "The true",
                                 EnCartelera = false,
+                                formato = Formatos.F4DX,
                                 FechaEstreno =  DateTime.Parse("12-12-2019"),
                                 Generos = new List<Genero>()
                                 {
@@ -87,6 +89,7 @@ namespace Parcial2UCAB.Test.DataSeed
                                 Id= new Guid("a0b34ab6-3fb7-4d3b-ad33-065521a528eb"),
                                 Titulo = "La Bella y la Bestia",
                                 EnCartelera = false,
+                                formato = Formatos.F3D,
                                 FechaEstreno =  DateTime.Parse("12-12-1980"),
                                 Generos = new List<Genero>()
                                 {
@@ -125,6 +128,7 @@ namespace Parcial2UCAB.Test.DataSeed
                                 Id= new Guid("c0556a2f-c581-49d6-9914-cafe90ad179c"),
                                 Titulo = "En busqueda de la gloria",
                                 EnCartelera = true,
+                                formato = Formatos.F2D,
                                 FechaEstreno =  DateTime.Parse("12-12-2022"),
                                 Generos = new List<Genero>()
                                 {
