@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parcial2UCAB.Persistence.Entities;
+using System;
 
 namespace Parcial2UCAB.Requests
 {
@@ -10,5 +11,7 @@ namespace Parcial2UCAB.Requests
         public string Biografia { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string FotoURL { get; set; }
+        public PersonType Type { get; set; }
+
     }
 }
