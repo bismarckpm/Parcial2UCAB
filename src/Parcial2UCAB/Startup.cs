@@ -29,6 +29,7 @@ namespace Parcial2UCAB
             services.AddTransient<IParcial2DbContext, Parcial2DbContext>();
             services.AddTransient<IActorDAO, ActorDAO>();
             services.AddTransient<IPeliculaDAO, PeliculaDAO>();
+            services.AddTransient<IPeliculaActorDAO, PeliculaActorDAO>();
 
             services.AddSwaggerGen(c =>
             {
