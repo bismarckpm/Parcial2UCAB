@@ -18,7 +18,7 @@ namespace Parcial2UCAB.Controllers
             _actorDAO = actorDAO;
         }
 
-        [HttpPost]
+        [HttpPost("/CreateActor")]
         public async Task<Guid> CreateActor([FromBody] ActorRequest request)
         {
             Guid result = new Guid();
@@ -35,7 +35,7 @@ namespace Parcial2UCAB.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut("/UpdateActor")]
         public async Task<Guid> UpdateActor([FromBody] ActorRequest request)
         {
             Guid result;
@@ -51,7 +51,7 @@ namespace Parcial2UCAB.Controllers
 
         }
 
-        [HttpGet("/{actorId}")]
+        [HttpGet("/GetActor")]
         public async Task<ActorResponse> GetActor([Required][FromRoute] Guid actorId)
         {
             ActorResponse result = null;

@@ -26,6 +26,7 @@ namespace Parcial2UCAB.Test.Controllers
             _controller.ControllerContext.ActionDescriptor = new ControllerActionDescriptor();
         }
 
+        //Test de la funcion CreateActor
         [Fact]
         public async Task CreateActor()
         {
@@ -38,6 +39,7 @@ namespace Parcial2UCAB.Test.Controllers
             Assert.IsType<Guid>(result);
         }
 
+        //Test de la funcion GetActor
         [Fact]
         public async Task GetActor()
         {
@@ -50,5 +52,79 @@ namespace Parcial2UCAB.Test.Controllers
 
             Assert.IsType<ActorResponse>(result);
         }
+
+        //Test de la funcion UpdateActor
+        [Fact]
+        public async Task UpdateActor()
+        {
+             _daoMock
+                .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                .ReturnsAsync(new Guid());
+
+            var result = await _controller.UpdateActor(new ActorRequest());
+
+            Assert.IsType<Guid>(result);
+        }
+
+        //Test de la Exception de CreateActor
+        [Fact]
+        public async Task ExceptionCreateActor()
+        {
+            try
+            {
+                _daoMock
+               .Setup(x => x.CreateActor(It.IsAny<ActorRequest>()))
+               .ThrowsAsync(new Exception());
+
+                var result = await _controller.CreateActor(new ActorRequest());
+
+                Assert.IsType<Guid>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+
+        }
+
+        //Test de la Exception de GetActor
+        [Fact]
+        public async Task ExceptionGetActor()
+        {
+            try
+            {
+                var actorId = Guid.NewGuid();
+                _daoMock
+                .Setup(x => x.GetActor(It.IsAny<Guid>()))
+                .ThrowsAsync(new Exception());
+
+                var result = await _controller.GetActor(actorId);
+
+                Assert.IsType<ActorResponse>(result);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+        //Test de la Exception de UpdateActor
+        [Fact]
+        public async Task ExceptionUpdateActor()
+        {
+            try
+            {
+                _daoMock
+                    .Setup(x => x.UpdateActor(It.IsAny<ActorRequest>()))
+                    .ThrowsAsync(new Exception());
+
+                var result = await _controller.UpdateActor(new ActorRequest());
+            }
+
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+        }
+
     }
 }
