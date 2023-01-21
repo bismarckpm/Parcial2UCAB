@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parcial2UCAB.Persistence.Database;
 
 namespace Parcial2UCAB.Migrations
 {
     [DbContext(typeof(Parcial2DbContext))]
-    partial class Parcial2DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230121005916_actorActualizado")]
+    partial class actorActualizado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

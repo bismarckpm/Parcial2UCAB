@@ -10,5 +10,16 @@ namespace Parcial2UCAB.Persistence.Entities
         public DateTime? FechaNacimiento { get; set; }
         public ICollection<PeliculaActor> PeliculasActor { get; set; }
         public string FotoURL { get; set; }
+        public PersonType Type { get; set; }
+
     }
+
+    public enum PersonType
+    {
+        Protagonista,
+        Secundario,
+        Dereparto,
+        DepequenasPartes
+    }
+
 }
