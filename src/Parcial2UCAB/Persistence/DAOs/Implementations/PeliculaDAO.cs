@@ -33,7 +33,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 var entity = new Pelicula();
                 entity.Titulo = Util.Ajustar(request.Titulo);
                 entity.EnCartelera = request.EnCartelera;
-                entity.FormatoPeli = request.FormatoPeli; 
+                entity.Formato = request.Formato; 
                 var generos = new List<Genero>();
                 foreach (var gen in request.Generos)
                 {
@@ -66,6 +66,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                 entity.Id = request.Id;
                 entity.Titulo = request.Titulo;
                 entity.EnCartelera = request.EnCartelera;
+                entity.Formato = request.Formato;
                 _context.Peliculas.Update(entity);
                 result = entity.Id;
                 await _context.SaveEfContextChanges("APPUSER");
@@ -95,7 +96,7 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                       Id = x.Id,
                       Titulo = x.Titulo,
                       EnCartelera = x.EnCartelera,
-                      Formato = x.FormatoPeli,
+                      Formato = x.Formato,
                       Generos = x.Generos.Select(k => new GeneroResponse
                       {
                           Nombre = k.Nombre

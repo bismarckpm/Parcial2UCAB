@@ -8,9 +8,8 @@ namespace Parcial2UCAB.Responses
     {
         public Guid Id { get; set; }
         public string Titulo { get; set; }
-        public string Formato { get; set; }
+        public FormatoPeli Formato { get; set; }
         public bool EnCartelera { get; set; }
-        public string FormatoPeli { get; set; }
         public DateTime FechaEstreno { get; set; }
         public List<GeneroResponse> Generos { get; set; }
     }
