@@ -33,7 +33,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
                     FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
+                    FotoURL = request.FotoURL,
+                    TipoActor = request.TipoActor
                 };
 
                 _context.Actores.Add(entity);
@@ -62,7 +63,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                     Nombre = request.Nombre + " " + request.Apellido,
                     Biografia = request.Biografia,
                     FechaNacimiento = request.FechaNacimiento,
-                    FotoURL = request.FotoURL
+                    FotoURL = request.FotoURL,
+                    TipoActor = request.TipoActor
                 };
 
                 _context.Actores.Update(entity);
@@ -92,7 +94,8 @@ namespace Parcial2UCAB.Persistence.DAOs.Implementations
                       Id = x.Id,
                       Nombre = x.Nombre,
                       Biografia = x.Biografia,
-                      Foto = x.FotoURL
+                      Foto = x.FotoURL,
+                      TipoActor = x.TipoActor,
                   });
 
                 return await data.SingleAsync();
