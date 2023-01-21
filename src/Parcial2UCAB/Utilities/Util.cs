@@ -25,7 +25,7 @@ namespace Parcial2UCAB.Utilities
             {
                 NewPalabra = NewPalabra + Convert.ToString(caracter);
 
-                if (ConEspacioONuevaLinea(caracter)) continue;
+                if (ConEspacioONewLinea(caracter)) continue;
 
                 if (NewLinea(caracter.ToString(CultureInfo.InvariantCulture))) continue;
 
@@ -58,7 +58,7 @@ namespace Parcial2UCAB.Utilities
 
                 if (contadorEspacios <= 0) continue;
 
-                _NewPalabra = QuitarEspacios(NewPalabra, contadorSalida, contadorEspacios);
+                _NewPalabra = SinEspacios(NewPalabra, contadorSalida, contadorEspacios);
 
                 contadorEspacios = 0;
             }
@@ -66,7 +66,7 @@ namespace Parcial2UCAB.Utilities
             return _NewPalabra;
         }
 
-        private static string QuitarEspacios(string NewPalabra, int contadorSalida, int contadorEspacios)
+        private static string SinEspacios(string NewPalabra, int contadorSalida, int contadorEspacios)
         {
             return NewPalabra.Remove(contadorSalida + 1, contadorEspacios);
         }
@@ -81,7 +81,7 @@ namespace Parcial2UCAB.Utilities
             return (string.IsNullOrEmpty(palabra)) || (string.IsNullOrWhiteSpace(palabra));
         }
 
-        private static bool ConEspacioONuevaLinea(char wrd)
+        private static bool ConEspacioONewLinea(char wrd)
         {
             return char.IsWhiteSpace(wrd) && (wrd == '\n');
         }
