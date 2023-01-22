@@ -12,3 +12,12 @@ namespace Parcial2UCAB.Persistence.Entities
         public ICollection<PeliculaActor> PeliculasActores { get; set; }
     }
 }
+
+
+public class Respuesta<T>
+{
+    public string Estatus { get; set; }
+    public string Codigo { get; set; }
+    public string  Mensaje { get; set; }
+    public T Data { get; set; }
+}
